@@ -33,11 +33,12 @@ class Reviews extends Component {
 
     render() {
         const arrayState = Object.keys(this.state);
+        const total = this.countTotalFeedback();
         return (
             <Section title="Please leave feedback">
             <FeedbackOptions options={arrayState} onLeaveFeedback={this.leaveFeedback} />
-            {(this.countTotalFeedback() > 0) ? (
-                <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />
+            {(total > 0) ? (
+                <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positivePercentage={this.countPositiveFeedbackPercentage()} />
             ) : (<Notification message="There is no feedback"></Notification>)}
             </Section>
         );
